@@ -3,6 +3,15 @@ import storage from "redux-persist/lib/storage";
 import auth from "../reducers/auth";
 import { combineReducers } from "@reduxjs/toolkit";
 import global from "../reducers/global";
+import user from "../reducers/user";
+
+const globalPersistConfig = {
+  key: "global",
+  storage,
+  whitelist: [],
+};
+
+const globalReducer = persistReducer(globalPersistConfig, global.globalReducer);
 
 const authPersistConfig = {
   key: "auth",
@@ -11,17 +20,12 @@ const authPersistConfig = {
 };
 const authReducer = persistReducer(authPersistConfig, auth.authReducer);
 
-const globalPersistConfig = {
-  key: "global",
-  storage,
-  whitelist: [],
-};
-const globalReducer = persistReducer(globalPersistConfig, global.globalReducer);
-
 const rootReducer = combineReducers({
+  globalReducer,
   authReducer,
   authApi: auth.authApi,
-  globalReducer,
+  userReducer: user.userReducer,
+  userApi: user.userApi,
 });
 
 export default rootReducer;

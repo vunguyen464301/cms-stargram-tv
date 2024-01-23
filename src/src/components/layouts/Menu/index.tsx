@@ -20,16 +20,16 @@ interface MenuProps {
 
 interface StyledDrawerProps extends DrawerProps {
   open: boolean;
-  drawerWidth: number; // Define the custom prop and its type
+  drawerwidth: number; // Define the custom prop and its type
 }
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
-})<StyledDrawerProps>(({ theme, open, drawerWidth }) => ({
+})<StyledDrawerProps>(({ theme, open, drawerwidth }) => ({
   "& .MuiDrawer-paper": {
     position: "relative",
     whiteSpace: "nowrap",
-    width: drawerWidth,
+    width: drawerwidth,
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -60,7 +60,7 @@ const MenuLayout = (props: MenuProps): JSX.Element => {
     <Drawer
       variant="permanent"
       open={open}
-      drawerWidth={drawerWidth}
+      drawerwidth={drawerWidth}
       className="component-menu"
     >
       <Toolbar
