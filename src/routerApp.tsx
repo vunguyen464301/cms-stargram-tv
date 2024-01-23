@@ -5,6 +5,8 @@ import {
 } from "react-router-dom";
 import { useAppSelector } from "./src/services/store";
 import { selectorAccessToken } from "./src/services/reducers/auth";
+import LoginPage from "./src/pages/login";
+import HomePage from "./src/pages/home";
 
 const authRouters = createBrowserRouter([
   {
@@ -13,14 +15,14 @@ const authRouters = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <div>login</div>,
+    element: <LoginPage />,
   },
 ]);
 
 const privateRouters = createBrowserRouter([
   {
     path: "/home",
-    element: <div>Home</div>,
+    element: <HomePage />,
   },
 ]);
 

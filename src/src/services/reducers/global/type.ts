@@ -2,4 +2,10 @@ interface GlobalState {
   openApp: boolean;
 }
 
-export type { GlobalState };
+interface Response<T> {
+  data: T;
+  message: string;
+  statusCode: number;
+}
+
+export type { GlobalState, Response };
