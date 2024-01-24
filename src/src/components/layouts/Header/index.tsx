@@ -4,6 +4,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Button from "@mui/material/Button";
+import { useAppDispatch } from "../../../services/store";
+import { setAccessToken } from "../../../services/reducers/auth";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderLayoutProps {
   open: boolean;
@@ -37,6 +42,14 @@ const AppBar = styled(MuiAppBar, {
 const HeaderLayout = (props: HeaderLayoutProps): JSX.Element => {
   const { open, toggleDrawer, drawerWidth } = props;
 
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const onLogout = (): void => {
+    dispatch(setAccessToken(undefined));
+    navigate("/login");
+  };
+
   return (
     <AppBar position="absolute" open={open} drawerwidth={drawerWidth}>
       <Toolbar
@@ -65,6 +78,10 @@ const HeaderLayout = (props: HeaderLayoutProps): JSX.Element => {
         >
           Dashboard
         </Typography>
+
+        <Button onClick={onLogout} variant="contained" color="info">
+          <LogoutIcon />
+        </Button>
         {/* <IconButton color="inherit">
       <Badge badgeContent={4} color="secondary">
         <NotificationsIcon />
