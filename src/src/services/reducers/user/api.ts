@@ -22,7 +22,7 @@ const userApi = createApi({
   endpoints: (builder) => ({
     getUsers: builder.query<Response<GetUserResponse>, GetUserRequest>({
       query: (params) => ({
-        url: "/",
+        url: "",
         method: "GET",
         params,
       }),
